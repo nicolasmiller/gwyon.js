@@ -1,3 +1,5 @@
 gwyon.js
 
 A minimal tetris implementation in javascript. Collision detection is limited/buggy at this point, but mostly working. Have fun!
+
+Play a live version here: http://nicolasmiller.github.com
