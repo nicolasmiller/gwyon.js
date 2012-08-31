@@ -269,13 +269,8 @@ function updateScore() {
 }
 
 function newGame() {
-	$("#youlose").toggle();
 	clearScreen();
-	score = 0;
-	$("#score").html(score);
-	main_interval = setInterval(function () {
-		main();
-	}, clock_period_ms);
+	main_interval = setInterval(main, clock_period_ms);
 }
 
 function initializeKeyboardInput() {
@@ -309,18 +304,15 @@ function initializeKeyboardInput() {
 			rotate();
 			drawBlock(current_x, current_y);
 		}
-		else if(code == 110) {
-			newGame();
-		}
 	});
 }
 
 function main() {
 	if(newBlock) {
 		if(lostGame()) {
-			$("#youlose").toggle();
 			fillScreen();
 			clearInterval(main_interval);
+			setTimeout(newGame, 2000);
 			return;
 		}
 		removeFullRows();
@@ -343,7 +335,6 @@ function main() {
 }
 
 $(document).ready(function() {
-	$("#youlose").toggle();
 	var x;
 	var y;
 	var i;
@@ -354,9 +345,5 @@ $(document).ready(function() {
 	}
 
 	initializeKeyboardInput();
-
-	main_interval = setInterval(function () {
-		main();
-	}, clock_period_ms);
-
+	newGame();
 });

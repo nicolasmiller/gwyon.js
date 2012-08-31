@@ -4,41 +4,62 @@
 	<script src="gwyon.js" type="text/javascript"></script>
 	<head>
 		<title>
-			untitled block game!
+			The Fallacy of Misplaced Concreteness
 		</title>
 		<link href="gwyon.css" rel="stylesheet" type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	</head>
-	<body>
-		<table>
-			<tr>
-				<td>
-					<ul id="grid">
-					</ul>
-				</td>
-				<td>
-					<div style="margin-left: 10px">
-						<br>
-						<b>Score</b>
-						<div id="score">
-						</div>
-						<br>
-						'w' - Rotate
-						<br>
-						's' - Down
-						<br>
-						'a' - Left
-						<br>
-						'd' - Right
-						<br>
-						<br>
-						<div id="youlose">
-							<b style="color: red; font-size: 16pt">You Lose.</b>
-							<br>
-							<a href="javascript:newGame()">Start a new game.</a>
-						</div>
-					</div>
-				</td>
-			</tr>
-		</table>
+	<body class="sans">
+		<div id="name" style="float: left; margin-left: 5%; margin-top: 5%; width: 200px;">
+		</div>
+		<ul style="float: right; margin-top: 8%; margin-right: 50%" id="grid">
+		</ul>
 	</body>
+	<script>
+		$(document).ready(function () {
+			var name = "Nicolas Steven Miller";
+			var name_html = "";
+			function random_color() {
+				var colors = [
+					'yellow',
+					'magenta',
+					'cyan'
+				];
+				return colors[Math.floor(colors.length * Math.random())];
+			}
+
+			for(var i = 0; i < name.length; i++) {
+				var character = name[i] === ' ' ? '&nbsp' : name[i];
+				(function () {
+					var base_color = 'white';
+					if(i % 5 == 0) {
+						base_color = random_color();
+					}
+					$("#name").append(
+						$('<div>').addClass('letter sans').css('float', 'left').css('color', base_color).html(character)
+							.hover(function () { $(this).css('color', random_color()); },
+								function () { $(this).css('color', base_color);}));
+				})()
+			}
+			
+			$("#name").append(
+				$('<a>').addClass('link').attr('href', 'http://www.github.com/nicolasmiller').html('Github')
+							.hover(
+								function () { $(this).css('color', random_color()); },
+								function () { $(this).css('color', 'white');}))
+				.append($('<a>').addClass('link').attr('href', 'http://soundcloud.com/nicolas-steven-miller').html('Soundcloud')
+							.hover(
+								function () { $(this).css('color', random_color()); },
+								function () { $(this).css('color', 'white');}))
+				.append($('<a>').addClass('link').attr('href', 'mailto:nicolasmiller@gmail.com').html('Contact')
+							.hover(
+								function () { $(this).css('color', random_color()); },
+								function () { $(this).css('color', 'white');}))
+				.append($('<div>').addClass('link').html('Hint: WSAD')
+							.hover(
+								function () { $(this).css('color', random_color()); },
+								function () { $(this).css('color', 'white');}));
+
+		});
+	</script>
 </html>
