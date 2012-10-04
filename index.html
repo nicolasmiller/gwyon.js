@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="jquery.animate-colors-min.js" type="text/javascript"></script>
 	<script src="gwyon.js" type="text/javascript"></script>
 	<head>
 		<title>
@@ -17,48 +18,54 @@
 	</body>
 	<script>
 		$(document).ready(function () {
-			var name = "Nicolas Steven Miller";
-			var name_html = "";
-			function random_color() {
-				var colors = [
-					'yellow',
-					'magenta',
-					'cyan'
-				];
-				return colors[Math.floor(colors.length * Math.random())];
-			}
+			var name = "Nicolas Steven Miller",
+                grays = ['#333', '#444', '#555', '#666', '#777', '#888', '#999', '#aaa', '#bbb', '#ccc'];
+
+            function random_gray() {
+                return grays[4 + Math.floor(Math.random() * (grays.length - 4))];
+            }
+
+            function set_color(color) {
+                return function() {
+                    $(this).css('color', color);
+                }
+            }
+
+            function animate_to_color(c) {
+                return function() {
+	                $(this).animate({color: c});
+                }
+            }
 
 			for(var i = 0; i < name.length; i++) {
-				var character = name[i] === ' ' ? '&nbsp' : name[i];
-				(function () {
-					var base_color = 'white';
-					if(i % 5 == 0) {
-						base_color = random_color();
-					}
-					$("#name").append(
-						$('<div>').addClass('letter sans').css('float', 'left').css('color', base_color).html(character)
-							.hover(function () { $(this).css('color', random_color()); },
-								function () { $(this).css('color', base_color);}));
-				})()
+				    var character = name[i] === ' ' ? '&nbsp' : name[i];
+				    $("#name").append($('<div>').addClass('letter sans').html(character)
+                                .css('float', 'left')
+                                .css('color', grays[0])
+							    .hover(set_color(random_gray()),
+                                   animate_to_color(grays[0])));
 			}
 			
 			$("#name").append(
-				$('<a>').addClass('link').attr('href', 'http://www.github.com/nicolasmiller').html('Github')
-							.hover(
-								function () { $(this).css('color', random_color()); },
-								function () { $(this).css('color', 'white');}))
-				.append($('<a>').addClass('link').attr('href', 'http://soundcloud.com/nicolas-steven-miller').html('Soundcloud')
-							.hover(
-								function () { $(this).css('color', random_color()); },
-								function () { $(this).css('color', 'white');}))
-				.append($('<a>').addClass('link').attr('href', 'mailto:nicolasmiller@gmail.com').html('Contact')
-							.hover(
-								function () { $(this).css('color', random_color()); },
-								function () { $(this).css('color', 'white');}))
-				.append($('<div>').addClass('link').html('Hint: WSAD')
-							.hover(
-								function () { $(this).css('color', random_color()); },
-								function () { $(this).css('color', 'white');}));
+				$('<a>').addClass('link').css('color', grays[3]).attr('href', 'http://www.github.com/nicolasmiller').html('Github')
+							.hover(set_color(grays[0]),
+                                   animate_to_color(grays[3])))
+
+				.append($('<a>').addClass('link').css('color', grays[4]).attr('href', 'resume.html').html('Resum\u00E9')
+							.hover(set_color(grays[0]),
+                                   animate_to_color(grays[4])))
+
+				.append($('<a>').addClass('link').css('color', grays[5]).attr('href', 'http://soundcloud.com/nicolas-steven-miller').html('Soundcloud')
+							.hover(set_color(grays[0]),
+                                   animate_to_color(grays[5])))
+
+				.append($('<a>').addClass('link').css('color', grays[6]).attr('href', 'mailto:nicolasmiller@gmail.com').html('Contact')
+							.hover(set_color(grays[0]),
+                                   animate_to_color(grays[6])))
+
+				.append($('<div>').addClass('link').css('color', grays[7]).html('Hint: WSAD')
+							.hover(set_color(grays[0]),
+                                   animate_to_color(grays[7])));
 
 		});
 	</script>

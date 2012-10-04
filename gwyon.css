@@ -1,10 +1,6 @@
 a:link, a:active, a:visited {
 	text-decoration: none;
-	color: white;
-}
-
-a:hover {
-	text-decoration: line-through;
+	color: black;
 }
 
 .center {
@@ -13,21 +9,19 @@ a:hover {
 }
 
 .on {
-	background-color: white;
+	background-color: #444;
 }
 
 body {
-	background-color: black;
-	color: white;
+	background-color: #f0f0f0 ;
+	color: black;
 }
 
 li {
 	width: 20px;
 	height: 20px;
-	background-color: black;
 	margin: 1px;
 	float: left;
-	color: white;
 }
 
 .letter {
