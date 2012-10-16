@@ -22,6 +22,7 @@ li {
 	height: 20px;
 	margin: 1px;
 	float: left;
+    background-color: yellow;
 }
 
 .letter {
@@ -44,4 +45,28 @@ ul {
 	list-style-type: none;
 	width: 220px;
 	padding: 2px;
+}
+
+.container {
+    width: 570px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+#name {
+    width: 220px; 
+    margin-right: 100px;
+    display: inline-block;
+}
+
+.grid-container {
+    display: inline-block; 
+    margin-bottom: 20px;
+}
+
+.standalone {
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 75px;
 }

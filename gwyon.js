@@ -99,7 +99,6 @@ function randomBlock() {
 function lostGame() {
 	var col;
 
-	// see if the top row is empty
 	for(col = 0; col < width; col++) {
 		if(isOn(col, 0)) {
 			return true;
