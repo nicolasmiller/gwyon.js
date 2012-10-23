@@ -234,10 +234,10 @@ function hitBottom() {
 }
 
 function removeFullRows() {
-	var row;
-	var col;
-	var rowsToRemove = [];
-	var isFull;
+	var row,
+	    col,
+	    rowsToRemove = [],
+	    isFull;
 	for(row = height - 1; row >= 0; row--) {
 		isFull = true;
 		for(col = 0; col < width; col++) {
@@ -347,9 +347,9 @@ function main() {
 }
 
 $(document).ready(function() {
-	var x;
-	var y;
-	var i;
+	var x,
+	    y,
+	    i;
 	for(y = 0; y < height; y++) {	
 		for(x = 0; x < width; x++) {
 			$("#grid").append("<li id=" + String(x) + "_" + String(y) + "></li>");
